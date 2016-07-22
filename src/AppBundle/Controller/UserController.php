@@ -174,8 +174,6 @@ class UserController extends Controller
                         "message" => "Usuario no actualizado"
                     );
                 }
-
-
             }else{
                 $data = array(
                     "status" => "Error",
@@ -213,7 +211,6 @@ class UserController extends Controller
                         'id' => $auth_check->sub
                     )
                 );
-
             // Upload foto perfil usuario
             $file = $request->files->get('image');
 
@@ -226,6 +223,7 @@ class UserController extends Controller
                     $file->move("uploads/users/", $file_name);
 
                     $user->setImage($file_name);
+                    $user->setUpdatedAt(new \DateTime("now"));
 
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($user);
