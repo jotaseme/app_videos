@@ -95,4 +95,93 @@ class VideoController extends Controller
         }
         return $helpers->json($data);
     }
+
+
+    /**
+     * @Route("/video/{id_video}", name="update_video")
+     * @Method({"POST"})
+     */
+    public function updateAction(Request $request, $id_video = null)
+    {
+        $helpers = $this->get("app.helpers");
+
+        $hash = $request->get("authorization", null);
+        $auth_check = $helpers->auth_check($hash, true);
+
+        //check el token para ver si el token contiene los datos decodificados o no existe dicho token
+        if($auth_check){
+            $json = $request->get("json",null);
+            $params = json_decode($json);
+            if($json != null){
+                $updated_at = new \DateTime("now");
+                $image = null;
+                $video_path = null;
+                $user_id = $auth_check->sub;
+                $title = (isset($params->title)) ? $params->title : null;
+                $description = (isset($params->description)) ? $params->description : null;
+                $status = (isset($params->status)) ? $params->status : null;
+
+                if($user_id != null && $title != null){
+                    $video  = $this->getDoctrine()
+                        ->getRepository('BackendBundle:Video')
+                        ->findOneBy(
+                            array(
+                                'id' => $id_video
+                            )
+                        );
+                    if(!empty($video)){
+                        if(isset($auth_check->sub) && $auth_check->sub == $video->getUser()->getId()){
+                            $video->setTitle($title);
+                            $video->setDescription($description);
+                            $video->setStatus($status);
+                            $video->setUpdatedAt($updated_at);
+
+                            $em = $this->getDoctrine()->getManager();
+                            $em->persist($video);
+                            $em->flush();
+
+                            $data = array(
+                                "status" => "Success",
+                                "code"  => 201,
+                                "message" => "Video actualizado correctamente"
+                            );
+                        }else{
+                            $data = array(
+                                "status" => "Error",
+                                "code"  => 400,
+                                "message" => "Video no actualizado. Error de autenticacion de usuario"
+                            );
+                        }
+                    }else{
+                        $data = array(
+                            "status" => "Error",
+                            "code"  => 404,
+                            "message" => "Video no encontrado"
+                        );
+                    }
+
+                }else{
+                    $data = array(
+                        "status" => "Error",
+                        "code"  => 400,
+                        "message" => "Video no actualizado. Falta titulo"
+                    );
+                }
+
+            }else{
+                $data = array(
+                    "status" => "Error",
+                    "code"  => 400,
+                    "message" => "Video no actualizado. Missing parameters"
+                );
+            }
+        }else{
+            $data = array(
+                "status" => "Error",
+                "code"  => 400,
+                "message" => "Autorizacion incorrecta"
+            );
+        }
+        return $helpers->json($data);
+    }
 }
