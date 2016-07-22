@@ -74,7 +74,7 @@ class JwtAuth
             $auth = false;
         }
 
-        if($getIdentity){
+        if($getIdentity && $auth){
             return $decoded;
         }else{
             return $auth;
