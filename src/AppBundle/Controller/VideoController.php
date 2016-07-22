@@ -45,8 +45,6 @@ class VideoController extends Controller
                                 'id' => $user_id
                             )
                         );
-
-                    // Creacion de la entidad video
                     $video = new Video();
                     $video->setUser($user);
                     $video->setTitle($title);
