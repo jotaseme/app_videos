@@ -51,4 +51,8 @@ BackendBundle\Entity\User:
             type: datetime
             nullable: true
             column: created_at
+        updatedAt:
+                    type: datetime
+                    nullable: true
+                    column: updated_at
     lifecycleCallbacks: {  }
