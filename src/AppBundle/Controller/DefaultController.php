@@ -7,8 +7,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-
-
 use Symfony\Component\Validator\Constraints as Assert;
 
 class DefaultController extends Controller
@@ -49,10 +47,13 @@ class DefaultController extends Controller
             $email_validator = $this->get("validator")->validate($email, $email_constraint);
 
             if((count($email_validator) == 0) && ($password != null)){
+                //Cifrar password
+                $pass = hash('sha256', $password);
+
                 if($getHash==null){
-                    $signup = $jwt_auth->signup($email,$password);
+                    $signup = $jwt_auth->signup($email,$pass);
                 }else{
-                    $signup = $jwt_auth->signup($email,$password,true);
+                    $signup = $jwt_auth->signup($email,$pass,true);
 
                 }
                 return new JsonResponse($signup);
