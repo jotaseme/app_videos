@@ -89,15 +89,6 @@ class UserController extends Controller
         return $helpers->json($data);
     }
 
-    /**
-     * @Route("/usuarios", name="get_usuarios")
-     * @Method({"GET"})
-     */
-    public function getUsuariosAction()
-    {
-        echo "Hello get world!";die();
-    }
-
 
     /**
      * @Route("/usuario", name="update_usuario")
@@ -160,9 +151,6 @@ class UserController extends Controller
 
                     // Update valido si el nuevo correo introducido no existe
                     // O si no se ha introducido ningun correo y por defecto se pasa el email que ya se tenia
-
-
-
                     if(count($isset_user)==0 || $auth_check->email == $email){
                         $em = $this->getDoctrine()->getManager();
                         $em->persist($user);
@@ -203,6 +191,81 @@ class UserController extends Controller
             );
         }
         return $helpers->json($data);
+    }
+
+    /**
+     * @Route("/images", name="images")
+     * @Method({"POST"})
+     */
+    public function uploadImageAction(Request $request)
+    {
+        $helpers=$this->get("app.helpers");
+
+        $hash =  $request->get("authorization", null);
+        $auth_check = $helpers->auth_check($hash,true);
+
+        //check el token para ver si el token contiene los datos decodificados o no existe dicho token
+        if($auth_check){
+            $user  = $this->getDoctrine()
+                ->getRepository('BackendBundle:User')
+                ->findOneBy(
+                    array(
+                        'id' => $auth_check->sub
+                    )
+                );
+
+            // Upload foto perfil usuario
+            $file = $request->files->get('image');
+
+            if(!empty($file) && $file != null){
+                $extension  = $file->guessExtension();
+
+                if($extension == "jpeg" || $extension == "png" || $extension == "jpg" ||
+                    $extension == "gif"){
+                    $file_name = time() . "." . $extension;
+                    $file->move("uploads/users/", $file_name);
+
+                    $user->setImage($file_name);
+
+                    $em = $this->getDoctrine()->getManager();
+                    $em->persist($user);
+                    $em->flush();
+                    $data = array(
+                        "status" => "Success",
+                        "code"  => 200,
+                        "message" => "Imagen usuario actualizada con exito"
+                    );
+                }else{
+                    $data = array(
+                        "status" => "Error",
+                        "code"  => 400,
+                        "message" => "Extension no soportada"
+                    );
+                }
+            }else{
+                $data = array(
+                    "status" => "Error",
+                    "code"  => 400,
+                    "message" => "Imagen no valida"
+                );
+            }
+        }else{
+            $data = array(
+                "status" => "Error",
+                "code"  => 400,
+                "message" => "Autorizacion incorrecta"
+            );
+        }
+        return $helpers->json($data);
+    }
+
+    /**
+     * @Route("/usuarios", name="get_usuarios")
+     * @Method({"GET"})
+     */
+    public function getUsuariosAction()
+    {
+        echo "Hello get world!";die();
     }
 
 
