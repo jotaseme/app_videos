@@ -97,4 +97,112 @@ class UserController extends Controller
     {
         echo "Hello get world!";die();
     }
+
+
+    /**
+     * @Route("/usuario", name="update_usuario")
+     * @Method({"POST"})
+     */
+    public function updateAction(Request $request)
+    {
+        $helpers=$this->get("app.helpers");
+
+        $hash =  $request->get("authorization", null);
+        $auth_check = $helpers->auth_check($hash,true);
+
+
+        //check el token para ver si el token contiene los datos decodificados o no existe dicho token
+        if($auth_check){
+            $user  = $this->getDoctrine()
+                ->getRepository('BackendBundle:User')
+                ->findOneBy(
+                    array(
+                        'id' => $auth_check->sub
+                    )
+                );
+
+            $json = $request->get("json",null);
+            $params = json_decode($json);
+
+            if($json != null){
+                $updated_at = new \DateTime("now");
+                $image = null;
+                $role = "1";
+                $email = (isset($params->email)) ? $params->email : null;
+                $name = (isset($params->name)) ? $params->name : null;
+                $password = (isset($params->password)) ? $params->password : null;
+
+                $email_constraint = new Assert\Email();
+                $email_constraint->message = "Formato de correo invalido";
+                $email_validator = $this->get("validator")->validate($email, $email_constraint);
+
+                if($email != null && count($email_validator) == 0 && $name != null){
+
+                    $user->setUpdatedAt($updated_at);
+                    $user->setEmail($email);
+                    $user->setName($name);
+                    $user->setImage($image);
+                    $user->setRole($role);
+
+                    if($password != null)
+                    {
+                        //Cifrar password
+                        $pass = hash('sha256', $password);
+                        $user->setPassword($pass);
+                    }
+
+
+                    $isset_user  = $this->getDoctrine()
+                        ->getRepository('BackendBundle:User')
+                        ->findBy(
+                            array(
+                                'email' => $email
+                            )
+                        );
+
+                    // Update valido si el nuevo correo introducido no existe
+                    // O si no se ha introducido ningun correo y por defecto se pasa el email que ya se tenia
+                    if(count($isset_user)==0 || $auth_check->email == $email){
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($user);
+                        $em->flush();
+                        $data = array(
+                            "status" => "Success",
+                            "code"  => 200,
+                            "message" => "Usuario actualizado con exito"
+                        );
+                    }else{
+                        $data = array(
+                            "status" => "Error",
+                            "code"  => 400,
+                            "message" => "Usuario no actualizdo, el email de registro introducido ya existe"
+                        );
+                    }
+                }else{
+                    $data = array(
+                        "status" => "Error",
+                        "code"  => 400,
+                        "message" => "Usuario no actualizado"
+                    );
+                }
+
+
+            }else{
+                $data = array(
+                    "status" => "Error",
+                    "code"  => 400,
+                    "message" => "Usuario no actualizado"
+                );
+            }
+        }else{
+            $data = array(
+                "status" => "Error",
+                "code"  => 400,
+                "message" => "Autorizacion incorrecta"
+            );
+        }
+        return $helpers->json($data);
+    }
+
+
 }
