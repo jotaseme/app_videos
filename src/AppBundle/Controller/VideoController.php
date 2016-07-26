@@ -338,7 +338,7 @@ class VideoController extends Controller
     }
 
     /**
-     * @Route("/video/{id_video}", name="show_video"))
+     * @Route("/video/{id_video}", name="video"))
      * @Method({"GET"})
      */
     public function showOneAction($id_video)

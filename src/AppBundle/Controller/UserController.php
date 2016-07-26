@@ -258,12 +258,50 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/usuarios", name="get_usuarios")
+     * @Route("/channel/{id_usuario}", name="channel")
      * @Method({"GET"})
      */
-    public function getUsuariosAction()
+    public function showAction(Request $request, $id_usuario)
     {
-        echo "Hello get world!";die();
+        $helpers = $this->get("app.helpers");
+        $user  = $this->getDoctrine()
+            ->getRepository('BackendBundle:User')
+            ->findOneBy(
+                array(
+                    'id' => $id_usuario
+                )
+            );
+        if($user){
+            $em = $this->getDoctrine()->getManager();
+            $dql = "SELECT v FROM BackendBundle:Video v ".
+                "WHERE v.user = $id_usuario ORDER BY v.id DESC";
+            $query = $em->createQuery($dql);
+            $page = $request->query->getInt("page",1);
+            $paginator = $this->get("knp_paginator");
+            $items_per_page = 6;
+
+            $pagination = $paginator->paginate($query,$page,$items_per_page);
+            $total_items_cont = $pagination->getTotalItemCount();
+
+            $data = array(
+                "status" => "Success",
+                "total_items_count" => $total_items_cont,
+                "page_actual" => $page,
+                "items_per_page" => $items_per_page,
+                "total_pages" => ceil($total_items_cont / $items_per_page),
+                "data" => $pagination,
+                "code"  => 200,
+                "message" => "Listado de videos correcto",
+                "usuario" => $user
+            );
+        }else{
+            $data = array(
+                "status" => "Error",
+                "code"  => 400,
+                "message" => "Usuario no encontrado"
+            );
+        }
+        return $helpers->json($data);
     }
 
 

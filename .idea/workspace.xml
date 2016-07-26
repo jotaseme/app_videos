@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0cf3be90-a4b8-429b-b826-60e6b9b5b686" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/UserController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/UserController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/VideoController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/VideoController.php" />
     </list>
     <ignored path="symfony.iws" />
@@ -84,53 +86,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VideoController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="VideoController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/VideoController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.43611795">
-              <caret line="386" column="14" selection-start-line="386" selection-start-column="14" selection-end-line="386" selection-end-column="14" />
+            <state vertical-scroll-proportion="-16.923077">
+              <caret line="302" column="8" selection-start-line="302" selection-start-column="8" selection-end-line="313" selection-end-column="37" />
               <folding>
                 <element signature="e#40#97#0#PHP" expanded="true" />
                 <element signature="e#829#3546#0#PHP" expanded="false" />
-                <marker date="1469522186757" expanded="true" signature="11591:11645" placeholder="SELECT v FRO... BackendBundle" />
-                <marker date="1469522186757" expanded="true" signature="12668:12729" placeholder="SELECT v FRO... BackendBundle" />
-                <marker date="1469522186757" expanded="true" signature="14210:14259" placeholder="SELECT v FRO... BackendBundle" />
-                <marker date="1469522186757" expanded="true" signature="14210:14296" placeholder="SELECT v FRO... BackendBundle" />
-                <marker date="1469522186757" expanded="true" signature="14210:14363" placeholder="SELECT v FRO... BackendBundle" />
-                <marker date="1469522186757" expanded="true" signature="14401:14455" placeholder="SELECT v FRO... BackendBundle" />
+                <marker date="1469523020437" expanded="true" signature="11591:11645" placeholder="SELECT v FRO... BackendBundle" />
+                <marker date="1469523020437" expanded="true" signature="12668:12729" placeholder="SELECT v FRO... BackendBundle" />
+                <marker date="1469523020437" expanded="true" signature="14205:14254" placeholder="SELECT v FRO... BackendBundle" />
+                <marker date="1469523020437" expanded="true" signature="14205:14291" placeholder="SELECT v FRO... BackendBundle" />
+                <marker date="1469523020437" expanded="true" signature="14205:14358" placeholder="SELECT v FRO... BackendBundle" />
+                <marker date="1469523020437" expanded="true" signature="14396:14450" placeholder="SELECT v FRO... BackendBundle" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/BackendBundle/Entity/User.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-25.76923">
-              <caret line="255" column="32" selection-start-line="255" selection-start-column="32" selection-end-line="255" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-47.03846">
-              <caret line="230" column="20" selection-start-line="230" selection-start-column="20" selection-end-line="234" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.14373465">
+              <caret line="273" column="18" selection-start-line="273" selection-start-column="18" selection-end-line="273" selection-end-column="18" />
               <folding>
                 <element signature="e#40#70#0#PHP" expanded="true" />
+                <marker date="1469523564843" expanded="true" signature="9759:9860" placeholder="SELECT v FRO... BackendBundle" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Video.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/BackendBundle/Entity/Video.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.2692308">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -171,12 +154,12 @@
         <option value="$PROJECT_DIR$/src/BackendBundle/Entity/User.php" />
         <option value="$PROJECT_DIR$/src/BackendBundle/Resources/config/doctrine/User.orm.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/Services/JwtAuth.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/UserController.php" />
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/src/BackendBundle/Entity/VideoRepository.php" />
         <option value="$PROJECT_DIR$/src/BackendBundle/Entity/Video.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/VideoController.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/UserController.php" />
       </list>
     </option>
   </component>
@@ -695,19 +678,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/678584a2/e58937ad-ddeb-491b-a744-d13db04aa549/videos_app.videos">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/doctrine/common/lib/Doctrine/Common/Persistence/ObjectRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34398034">
@@ -750,33 +720,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BackendBundle/Entity/Video.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.2692308">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+    <entry file="dbDummy://dbtable:/678584a2/e58937ad-ddeb-491b-a744-d13db04aa549/videos_app.users">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/BackendBundle/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-25.76923">
+        <state vertical-scroll-proportion="0.8230958">
           <caret line="255" column="32" selection-start-line="255" selection-start-column="32" selection-end-line="255" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/UserController.php">
+    <entry file="file://$PROJECT_DIR$/src/BackendBundle/Entity/Video.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-47.03846">
-          <caret line="230" column="20" selection-start-line="230" selection-start-column="20" selection-end-line="234" selection-end-column="22" />
-          <folding>
-            <element signature="e#40#70#0#PHP" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-0.522113">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://dbtable:/678584a2/e58937ad-ddeb-491b-a744-d13db04aa549/videos_app.users">
+    <entry file="dbDummy://dbtable:/678584a2/e58937ad-ddeb-491b-a744-d13db04aa549/videos_app.videos">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -791,17 +764,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/VideoController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43611795">
-          <caret line="386" column="14" selection-start-line="386" selection-start-column="14" selection-end-line="386" selection-end-column="14" />
+        <state vertical-scroll-proportion="-16.923077">
+          <caret line="302" column="8" selection-start-line="302" selection-start-column="8" selection-end-line="313" selection-end-column="37" />
           <folding>
             <element signature="e#40#97#0#PHP" expanded="true" />
             <element signature="e#829#3546#0#PHP" expanded="false" />
-            <marker date="1469522186757" expanded="true" signature="11591:11645" placeholder="SELECT v FRO... BackendBundle" />
-            <marker date="1469522186757" expanded="true" signature="12668:12729" placeholder="SELECT v FRO... BackendBundle" />
-            <marker date="1469522186757" expanded="true" signature="14210:14259" placeholder="SELECT v FRO... BackendBundle" />
-            <marker date="1469522186757" expanded="true" signature="14210:14296" placeholder="SELECT v FRO... BackendBundle" />
-            <marker date="1469522186757" expanded="true" signature="14210:14363" placeholder="SELECT v FRO... BackendBundle" />
-            <marker date="1469522186757" expanded="true" signature="14401:14455" placeholder="SELECT v FRO... BackendBundle" />
+            <marker date="1469523020437" expanded="true" signature="11591:11645" placeholder="SELECT v FRO... BackendBundle" />
+            <marker date="1469523020437" expanded="true" signature="12668:12729" placeholder="SELECT v FRO... BackendBundle" />
+            <marker date="1469523020437" expanded="true" signature="14205:14254" placeholder="SELECT v FRO... BackendBundle" />
+            <marker date="1469523020437" expanded="true" signature="14205:14291" placeholder="SELECT v FRO... BackendBundle" />
+            <marker date="1469523020437" expanded="true" signature="14205:14358" placeholder="SELECT v FRO... BackendBundle" />
+            <marker date="1469523020437" expanded="true" signature="14396:14450" placeholder="SELECT v FRO... BackendBundle" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/UserController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14373465">
+          <caret line="273" column="18" selection-start-line="273" selection-start-column="18" selection-end-line="273" selection-end-column="18" />
+          <folding>
+            <element signature="e#40#70#0#PHP" expanded="true" />
+            <marker date="1469523564843" expanded="true" signature="9759:9860" placeholder="SELECT v FRO... BackendBundle" />
           </folding>
         </state>
       </provider>
