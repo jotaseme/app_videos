@@ -308,7 +308,30 @@ class VideoController extends Controller
             "total_pages" => ceil($total_items_cont / $items_per_page),
             "data" => $pagination,
             "code"  => 400,
-            "message" => "Autorizacion incorrecta"
+            "message" => "Listado de videos correcto"
+        );
+
+        return $helpers->json($data);
+    }
+
+    /**
+     * @Route("/last_videos", name="last_videos"))
+     * @Method({"GET"})
+     */
+    public function showLastVideosAction(Request $request)
+    {
+        $helpers = $this->get("app.helpers");
+        $em = $this->getDoctrine()->getManager();
+        $dql = "SELECT v FROM BackendBundle:Video v ORDER BY v.createdAt DESC";
+        $query = $em->createQuery($dql)->setMaxResults(5);
+
+        $videos = $query->getResult();
+
+        $data = array(
+            "status" => "Success",
+            "data" => $videos,
+            "code"  => 400,
+            "message" => "Listado de los 5 ultimos videos correcto"
         );
 
         return $helpers->json($data);

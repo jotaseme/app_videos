@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0cf3be90-a4b8-429b-b826-60e6b9b5b686" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/AppKernel.php" afterPath="$PROJECT_DIR$/app/AppKernel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/config.yml" afterPath="$PROJECT_DIR$/app/config/config.yml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/VideoController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/VideoController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/BackendBundle/Entity/Video.php" afterPath="$PROJECT_DIR$/src/BackendBundle/Entity/Video.php" />
     </list>
     <ignored path="symfony.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -74,24 +70,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VideoController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="VideoController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/VideoController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.346154">
-              <caret line="292" column="7" selection-start-line="292" selection-start-column="7" selection-end-line="292" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.6031941">
+              <caret line="324" column="72" selection-start-line="324" selection-start-column="72" selection-end-line="324" selection-end-column="72" />
               <folding>
                 <element signature="e#40#97#0#PHP" expanded="true" />
                 <element signature="e#829#3546#0#PHP" expanded="false" />
-                <marker date="1469520747211" expanded="true" signature="11591:11645" placeholder="SELECT v FRO... BackendBundle" />
+                <marker date="1469521235605" expanded="true" signature="11591:11645" placeholder="SELECT v FRO... BackendBundle" />
+                <marker date="1469521235605" expanded="true" signature="12668:12729" placeholder="SELECT v FRO... BackendBundle" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Video.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Video.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/BackendBundle/Entity/Video.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.10442261">
+            <state vertical-scroll-proportion="-3.2692308">
               <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding />
             </state>
@@ -123,8 +120,8 @@
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/src/BackendBundle/Entity/VideoRepository.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/VideoController.php" />
         <option value="$PROJECT_DIR$/src/BackendBundle/Entity/Video.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/VideoController.php" />
       </list>
     </option>
   </component>
@@ -436,10 +433,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1292" height="1000" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21658987" sideWeight="0.49675325" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20292208" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20292208" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32949308" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23732719" sideWeight="0.5032467" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20941558" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -689,23 +686,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/VideoController.php">
+    <entry file="file://$PROJECT_DIR$/src/BackendBundle/Entity/Video.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.346154">
-          <caret line="292" column="7" selection-start-line="292" selection-start-column="7" selection-end-line="292" selection-end-column="7" />
-          <folding>
-            <element signature="e#40#97#0#PHP" expanded="true" />
-            <element signature="e#829#3546#0#PHP" expanded="false" />
-            <marker date="1469520747211" expanded="true" signature="11591:11645" placeholder="SELECT v FRO... BackendBundle" />
-          </folding>
+        <state vertical-scroll-proportion="-3.2692308">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/BackendBundle/Entity/Video.php">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/VideoController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10442261">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.6031941">
+          <caret line="324" column="72" selection-start-line="324" selection-start-column="72" selection-end-line="324" selection-end-column="72" />
+          <folding>
+            <element signature="e#40#97#0#PHP" expanded="true" />
+            <element signature="e#829#3546#0#PHP" expanded="false" />
+            <marker date="1469521235605" expanded="true" signature="11591:11645" placeholder="SELECT v FRO... BackendBundle" />
+            <marker date="1469521235605" expanded="true" signature="12668:12729" placeholder="SELECT v FRO... BackendBundle" />
+          </folding>
         </state>
       </provider>
     </entry>
