@@ -208,7 +208,7 @@ class VideoController extends Controller
             if(!empty($video) && $auth_check->sub == $video->getUser()->getId()){
                 $file_image = $request->files->get('image',null);
                 $file_video = $request->files->get('video',null);
-
+                $updated_at = new \DateTime("now");
                 if($file_image != null && !empty($file_image)){
                     $extension  = $file_image->guessExtension();
                     if($extension == "jpeg" || $extension == "png" || $extension == "jpg" ||
@@ -216,6 +216,7 @@ class VideoController extends Controller
                         $file_name = time() . "." . $extension;
                         $file_image->move("uploads/video_images/video_" . $id_video, $file_name);
                         $video->setImage($file_name);
+                        $video->setUpdatedAt($updated_at);
                         $em = $this->getDoctrine()->getManager();
                         $em->persist($video);
                         $em->flush();
@@ -237,9 +238,9 @@ class VideoController extends Controller
                         $extension  = $file_video->guessExtension();
                         if($extension == "mp4" || $extension == "avi" || $extension == "wmv"){
                             $file_name = time() . "." . $extension;
-                            $file_video->move("uploads/video_files/video_1" . $id_video, $file_name);
+                            $file_video->move("uploads/video_files/video_" . $id_video, $file_name);
                             $video->setVideoPath($file_name);
-
+                            $video->setUpdatedAt($updated_at);
                             $em = $this->getDoctrine()->getManager();
                             $em->persist($video);
                             $em->flush();
@@ -278,6 +279,38 @@ class VideoController extends Controller
                 "message" => "Autorizacion incorrecta"
             );
         }
+        return $helpers->json($data);
+    }
+
+    /**
+     * @Route("/videos", name="videos"))
+     * @Method({"GET"})
+     */
+    public function showAction(Request $request)
+    {
+        $helpers = $this->get("app.helpers");
+
+        $em = $this->getDoctrine()->getManager();
+        $dql = "SELECT v FROM BackendBundle:Video v ORDER BY v.id DESC";
+        $query = $em->createQuery($dql);
+        $page = $request->query->getInt("page",1);
+        $paginator = $this->get("knp_paginator");
+        $items_per_page = 6;
+
+        $pagination = $paginator->paginate($query,$page,$items_per_page);
+        $total_items_cont = $pagination->getTotalItemCount();
+
+        $data = array(
+            "status" => "Success",
+            "total_items_count" => $total_items_cont,
+            "page_actual" => $page,
+            "items_per_page" => $items_per_page,
+            "total_pages" => ceil($total_items_cont / $items_per_page),
+            "data" => $pagination,
+            "code"  => 400,
+            "message" => "Autorizacion incorrecta"
+        );
+
         return $helpers->json($data);
     }
 

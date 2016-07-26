@@ -2,9 +2,8 @@
 
 namespace BackendBundle\Entity;
 
-/**
- * Video
- */
+use Doctrine\ORM\Mapping as ORM;
+
 class Video
 {
     /**
