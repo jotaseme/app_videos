@@ -341,7 +341,7 @@ class VideoController extends Controller
      * @Route("/video/{id_video}", name="show_video"))
      * @Method({"GET"})
      */
-    public function showOneAction(Request $request, $id_video)
+    public function showOneAction($id_video)
     {
         $helpers = $this->get("app.helpers");
 
@@ -363,14 +363,12 @@ class VideoController extends Controller
         }else{
             $data = array(
                 "status" => "Error",
-                
                 "code"  => 400,
                 "message" => "Video no existe"
             );
 
         }
-
-
+        
         return $helpers->json($data);
     }
 

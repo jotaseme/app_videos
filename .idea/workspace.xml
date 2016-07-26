@@ -87,13 +87,13 @@
       <file leaf-file-name="VideoController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/VideoController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7911548">
-              <caret line="365" column="16" selection-start-line="365" selection-start-column="16" selection-end-line="365" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.7285012">
+              <caret line="370" column="8" selection-start-line="370" selection-start-column="8" selection-end-line="370" selection-end-column="8" />
               <folding>
                 <element signature="e#40#97#0#PHP" expanded="true" />
                 <element signature="e#829#3546#0#PHP" expanded="false" />
-                <marker date="1469521582410" expanded="true" signature="11591:11645" placeholder="SELECT v FRO... BackendBundle" />
-                <marker date="1469521582410" expanded="true" signature="12668:12729" placeholder="SELECT v FRO... BackendBundle" />
+                <marker date="1469521698074" expanded="true" signature="11591:11645" placeholder="SELECT v FRO... BackendBundle" />
+                <marker date="1469521698074" expanded="true" signature="12668:12729" placeholder="SELECT v FRO... BackendBundle" />
               </folding>
             </state>
           </provider>
@@ -787,13 +787,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/VideoController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7911548">
-          <caret line="365" column="16" selection-start-line="365" selection-start-column="16" selection-end-line="365" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.7285012">
+          <caret line="370" column="8" selection-start-line="370" selection-start-column="8" selection-end-line="370" selection-end-column="8" />
           <folding>
             <element signature="e#40#97#0#PHP" expanded="true" />
             <element signature="e#829#3546#0#PHP" expanded="false" />
-            <marker date="1469521582410" expanded="true" signature="11591:11645" placeholder="SELECT v FRO... BackendBundle" />
-            <marker date="1469521582410" expanded="true" signature="12668:12729" placeholder="SELECT v FRO... BackendBundle" />
+            <marker date="1469521698074" expanded="true" signature="11591:11645" placeholder="SELECT v FRO... BackendBundle" />
+            <marker date="1469521698074" expanded="true" signature="12668:12729" placeholder="SELECT v FRO... BackendBundle" />
           </folding>
         </state>
       </provider>
