@@ -368,7 +368,47 @@ class VideoController extends Controller
             );
 
         }
-        
+
+        return $helpers->json($data);
+    }
+
+    /**
+     * @Route("/search_videos/{search}", name="search_videos"))
+     * @Method({"GET"})
+     */
+    public function videoSearchAction(Request $request, $search = null)
+    {
+        $helpers = $this->get("app.helpers");
+
+        if($search != null){
+            $dql = "SELECT v FROM BackendBundle:Video v WHERE v.title "
+            . "LIKE '%$search%' OR "
+            . "v.description LIKE '%$search%' ORDER BY v.id DESC";
+        }else{
+            $dql = "SELECT v FROM BackendBundle:Video v ORDER BY v.id DESC";
+        }
+
+        $em = $this->getDoctrine()->getManager();
+        $query = $em->createQuery($dql);
+        $page = $request->query->getInt("page",1);
+        $paginator = $this->get("knp_paginator");
+        $items_per_page = 6;
+
+        $pagination = $paginator->paginate($query,$page,$items_per_page);
+        $total_items_cont = $pagination->getTotalItemCount();
+
+        $data = array(
+            "status" => "Success",
+            "total_items_count" => $total_items_cont,
+            "page_actual" => $page,
+            "items_per_page" => $items_per_page,
+            "total_pages" => ceil($total_items_cont / $items_per_page),
+            "data" => $pagination,
+            "code"  => 200,
+            "message" => "Listado de videos correcto"
+        );
+
+
         return $helpers->json($data);
     }
 
