@@ -192,7 +192,7 @@ class UserController extends Controller
     }
 
     /**
-     * @Route("/images", name="images")
+     * @Route("/usuario/images", name="usuario/images")
      * @Method({"POST"})
      */
     public function uploadImageAction(Request $request)

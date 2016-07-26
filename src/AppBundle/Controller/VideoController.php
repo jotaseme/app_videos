@@ -184,4 +184,103 @@ class VideoController extends Controller
         }
         return $helpers->json($data);
     }
+
+    /**
+     * @Route("/videos/{id_video}/upload_image", name="upload_image")
+     * @Route("/videos/{id_video}/upload_video", name="upload_video")
+     * @Method({"POST"})
+     */
+    public function uploadAction(Request $request, $id_video)
+    {
+        $helpers = $this->get("app.helpers");
+        $hash = $request->get("authorization");
+        $auth_check = $helpers->auth_check($hash, true);
+
+        //check el token para ver si el token contiene los datos decodificados o no existe dicho token
+        if($auth_check){
+            $video  = $this->getDoctrine()
+                ->getRepository('BackendBundle:Video')
+                ->findOneBy(
+                    array(
+                        'id' => $id_video
+                    )
+                );
+            if(!empty($video) && $auth_check->sub == $video->getUser()->getId()){
+                $file_image = $request->files->get('image',null);
+                $file_video = $request->files->get('video',null);
+
+                if($file_image != null && !empty($file_image)){
+                    $extension  = $file_image->guessExtension();
+                    if($extension == "jpeg" || $extension == "png" || $extension == "jpg" ||
+                        $extension == "gif"){
+                        $file_name = time() . "." . $extension;
+                        $file_image->move("uploads/video_images/video_" . $id_video, $file_name);
+                        $video->setImage($file_name);
+                        $em = $this->getDoctrine()->getManager();
+                        $em->persist($video);
+                        $em->flush();
+
+                        $data = array(
+                            "status" => "Success",
+                            "code"  => 200,
+                            "message" => "Imagen actualizada con exito"
+                        );
+                    }else{
+                        $data = array(
+                            "status" => "Error",
+                            "code"  => 400,
+                            "message" => "Extension de imagen no soportada"
+                        );
+                    }
+                }else{
+                    if($file_video != null && !empty($file_video)){
+                        $extension  = $file_video->guessExtension();
+                        if($extension == "mp4" || $extension == "avi" || $extension == "wmv"){
+                            $file_name = time() . "." . $extension;
+                            $file_video->move("uploads/video_files/video_1" . $id_video, $file_name);
+                            $video->setVideoPath($file_name);
+
+                            $em = $this->getDoctrine()->getManager();
+                            $em->persist($video);
+                            $em->flush();
+
+                            $data = array(
+                                "status" => "Success",
+                                "code"  => 200,
+                                "message" => "Video actualizado con exito"
+                            );
+                        }else{
+                            $data = array(
+                                "status" => "Error",
+                                "code"  => 400,
+                                "message" => "Extension de video no soportada"
+                            );
+                        }
+                    }else{
+                        $data = array(
+                            "status" => "Error",
+                            "code"  => 400,
+                            "message" => "No se ha adjuntado ningun fichero"
+                        );
+                    }
+                }
+            }else{
+                $data = array(
+                    "status" => "Error",
+                    "code"  => 404,
+                    "message" => "Video no encontrado"
+                );
+            }
+        }else{
+            $data = array(
+                "status" => "Error",
+                "code"  => 400,
+                "message" => "Autorizacion incorrecta"
+            );
+        }
+        return $helpers->json($data);
+    }
+
+
+
 }
