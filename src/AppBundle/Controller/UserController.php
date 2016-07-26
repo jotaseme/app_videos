@@ -289,11 +289,11 @@ class UserController extends Controller
                 "page_actual" => $page,
                 "items_per_page" => $items_per_page,
                 "total_pages" => ceil($total_items_cont / $items_per_page),
-                "data" => $pagination,
                 "code"  => 200,
-                "message" => "Listado de videos correcto",
-                "usuario" => $user
+                "message" => "Listado de videos correcto"
             );
+            $data["data"]["videos"]=$pagination;
+            $data["data"]["user"]=$user;
         }else{
             $data = array(
                 "status" => "Error",
