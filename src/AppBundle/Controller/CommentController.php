@@ -166,4 +166,45 @@ class CommentController extends Controller
         }
         return $helpers->json($data);
     }
+
+
+    /**
+     * @Route("/videos/{id_video}/comments", name="show_comments")
+     * @Method({"GET"})
+     */
+    public function showAction(Request $request, $id_video)
+    {
+        $helpers = $this->get("app.helpers");
+
+        $video  = $this->getDoctrine()
+            ->getRepository('BackendBundle:Video')
+            ->findOneBy(
+                array(
+                    'id' => $id_video
+                )
+            );
+
+        $comments = $this->getDoctrine()
+            ->getRepository('BackendBundle:Comment')
+            ->findBy(
+                array('video' => $video),
+                array('id'=>'DESC')
+            );
+        if(count($comments) >= 1){
+            $data = array(
+                "status" => "Success",
+                "code"  => 200,
+                "data" => $comments
+            );
+        }else{
+            $data = array(
+                "status" => "Error",
+                "code"  => 400,
+                "message" => "No se han encontrado comentarios"
+            );
+        }
+
+        return $helpers->json($data);
+    }
+
 }
