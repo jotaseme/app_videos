@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="682787004">
+  <component name="DataSourceManagerImpl" format="xml" hash="2927213404">
     <data-source source="LOCAL" name="MySQL - videos_app@localhost" uuid="e58937ad-ddeb-491b-a744-d13db04aa549">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
