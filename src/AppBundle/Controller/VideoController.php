@@ -307,7 +307,7 @@ class VideoController extends Controller
             "items_per_page" => $items_per_page,
             "total_pages" => ceil($total_items_cont / $items_per_page),
             "data" => $pagination,
-            "code"  => 400,
+            "code"  => 200,
             "message" => "Listado de videos correcto"
         );
 
@@ -330,9 +330,46 @@ class VideoController extends Controller
         $data = array(
             "status" => "Success",
             "data" => $videos,
-            "code"  => 400,
+            "code"  => 200,
             "message" => "Listado de los 5 ultimos videos correcto"
         );
+
+        return $helpers->json($data);
+    }
+
+    /**
+     * @Route("/video/{id_video}", name="show_video"))
+     * @Method({"GET"})
+     */
+    public function showOneAction(Request $request, $id_video)
+    {
+        $helpers = $this->get("app.helpers");
+
+        $video  = $this->getDoctrine()
+            ->getRepository('BackendBundle:Video')
+            ->findOneBy(
+                array(
+                    'id' => $id_video
+                )
+            );
+        if($video){
+            $data = array(
+                "status" => "Success",
+                "data" => $video,
+                "code"  => 200,
+                "message" => "Video encontrado con exito"
+            );
+
+        }else{
+            $data = array(
+                "status" => "Error",
+                
+                "code"  => 400,
+                "message" => "Video no existe"
+            );
+
+        }
+
 
         return $helpers->json($data);
     }
