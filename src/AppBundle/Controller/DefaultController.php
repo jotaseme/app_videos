@@ -61,7 +61,7 @@ class DefaultController extends Controller
                 return $helpers->json(
                     array(
                         "status"=>"error",
-                        "data"=>"Validacion incorrecta"
+                        "data"=>"Validacion incorrecta. Formato de correo no soportado"
                     )
                 );
             }

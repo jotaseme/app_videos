@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class UserController extends Controller
 {
@@ -20,6 +21,7 @@ class UserController extends Controller
     {
         $helpers=$this->get("app.helpers");
         $json = $request->get("json",null);
+        $jwt_auth = $this->get("app.jwt_auth");
 
         $params = json_decode($json);
 
@@ -58,9 +60,13 @@ class UserController extends Controller
                     $em = $this->getDoctrine()->getManager();
                     $em->persist($user);
                     $em->flush();
+                    $user_identity = $jwt_auth->signup($email,$pass);
+                    $user_token = $jwt_auth->signup($email,$pass,true);
                     $data = array(
                         "status" => "Success",
                         "code"  => 201,
+                        "token" => $user_token,
+                        "identity" => new JsonResponse($user_identity),
                         "message" => "Usuario creado con exito"
                     );
                 }else{
@@ -97,6 +103,7 @@ class UserController extends Controller
     public function updateAction(Request $request)
     {
         $helpers=$this->get("app.helpers");
+        $jwt_auth = $this->get("app.jwt_auth");
 
         $hash =  $request->get("authorization", null);
         $auth_check = $helpers->auth_check($hash,true);
@@ -134,7 +141,7 @@ class UserController extends Controller
                     $user->setImage($image);
                     $user->setRole($role);
 
-                    if($password != null)
+                    if($password != null && !empty($password))
                     {
                         //Cifrar password
                         $pass = hash('sha256', $password);
@@ -155,23 +162,27 @@ class UserController extends Controller
                         $em = $this->getDoctrine()->getManager();
                         $em->persist($user);
                         $em->flush();
+                        $user_identity = $jwt_auth->signup($email,$user->getPassword());
+                        $user_token = $jwt_auth->signup($email,$user->getPassword(),true);
                         $data = array(
                             "status" => "Success",
                             "code"  => 200,
+                            "identity" => new JsonResponse($user_identity),
+                            "token" => $user_token,
                             "message" => "Usuario actualizado con exito"
                         );
                     }else{
                         $data = array(
                             "status" => "Error",
                             "code"  => 400,
-                            "message" => "Usuario no actualizdo, el email de registro introducido ya existe"
+                            "message" => "Usuario no actualizado, el email de registro introducido ya existe"
                         );
                     }
                 }else{
                     $data = array(
                         "status" => "Error",
                         "code"  => 400,
-                        "message" => "Usuario no actualizado"
+                        "message" => "Usuario no actualizado. Datos no validos"
                     );
                 }
             }else{
